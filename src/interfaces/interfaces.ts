@@ -5,6 +5,10 @@ export type ContextProps = {
     num: number;
     setNum: React.Dispatch<React.SetStateAction<number>>;
     columns: GridColDef<any, any, any>[];
+    handleRegister(data: any): Promise<unknown>;
+    handleLogin(data: any): Promise<unknown>,
+    handleGet(): Promise<any>;
+    handleNewContact(data: any): Promise<any>;
     rows: ({
         id: number;
         lastName: string;

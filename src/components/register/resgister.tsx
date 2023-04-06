@@ -3,8 +3,12 @@ import { FieldBox, RegisterBox } from "./register.styled";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Link from "next/link";
+import { Context } from "@/provider/provider";
+import { useContext } from "react"
 
 export function RegisterComponent() {
+
+    const { handleRegister } = useContext(Context)
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -18,7 +22,9 @@ export function RegisterComponent() {
             phone: phone,
             password: password
         }
-        console.log(registerData)
+
+        handleRegister(registerData)
+
         setName('');
         setEmail('');
         setPhone('');

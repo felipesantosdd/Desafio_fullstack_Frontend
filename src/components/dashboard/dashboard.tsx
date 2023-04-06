@@ -11,22 +11,24 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import ContactsIcon from '@mui/icons-material/Contacts';
 import { AppBarr } from './dashboard.styled';
 import { Context } from '@/provider/provider';
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import CustomModal from '../modal/newContact';
+import { useRouter } from 'next/router'
 
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export function DashboardComponent() {
+
+    const router = useRouter()
 
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
-    const { num, columns, rows } = useContext(Context)
+    const { num, columns, rows, handleGet } = useContext(Context)
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -43,14 +45,16 @@ export function DashboardComponent() {
         setAnchorElUser(null);
     };
 
-    console.log(num)
+    useEffect(() => {
+        handleGet()
+    }, [])
 
     return (
         <><AppBarr>
             <AppBar position="static">
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
-                        <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                        <ContactsIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                         <Typography
                             variant="h6"
                             noWrap
@@ -66,21 +70,16 @@ export function DashboardComponent() {
                                 textDecoration: 'none',
                             }}
                         >
-                            LOGO
+                            Contatos
                         </Typography>
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 
                         </Box>
-                        <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                        <ContactsIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                            <Button
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                                New Contact
-                            </Button>
+                            <CustomModal />
                         </Box>
 
                         <Box sx={{ flexGrow: 0 }}>
@@ -107,7 +106,10 @@ export function DashboardComponent() {
                             >
                                 {
                                     <MenuItem onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center">Logout</Typography>
+                                        <Typography textAlign="center" onClick={() => {
+                                            localStorage.clear()
+                                            router.push("/")
+                                        }}>Logout</Typography>
                                     </MenuItem>
                                 }
                             </Menu>
@@ -116,18 +118,18 @@ export function DashboardComponent() {
                 </Container>
             </AppBar>
         </AppBarr>
-            <Box sx={{ height: 400, width: '100%' }}>
+            <Box sx={{ height: 700, width: '100%' }}>
                 <DataGrid
                     rows={rows}
                     columns={columns}
                     initialState={{
                         pagination: {
                             paginationModel: {
-                                pageSize: 5,
+                                pageSize: 15,
                             },
                         },
                     }}
-                    pageSizeOptions={[5]}
+                    pageSizeOptions={[10]}
                     disableRowSelectionOnClick
                 />
             </Box>

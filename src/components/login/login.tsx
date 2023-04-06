@@ -1,21 +1,25 @@
 import { FieldBox, LoginBox } from "./login.styled";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Link from "next/link";
+import { Context } from "@/provider/provider";
 
 export function Login() {
+
+    const { handleLogin } = useContext(Context)
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     function handleSubmit() {
         const userData = {
-            username: username,
+            email: username,
             password: password
         }
 
-        console.log(userData);
+        handleLogin(userData)
+
     }
 
 
