@@ -118,7 +118,7 @@ export function DashboardComponent() {
                 </Container>
             </AppBar>
         </AppBarr>
-            <Box sx={{ height: 700, width: '100%' }}>
+            <Box sx={{ height: 600, width: '100%', marginTop: '50px', marginX: '10px' }}>
                 <DataGrid
                     rows={rows}
                     columns={columns}

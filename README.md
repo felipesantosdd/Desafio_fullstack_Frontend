@@ -1,6 +1,6 @@
 # Readme
 
-## para rodar esta aplicação utilize o comando yarn para baixar suas dependencias.
+## para rodar esta aplicação utilize o comando yarn para baixar suas dependencias, depois de baixar suas dependencias utilize yarn dev para rodar a aplicação.
 
 ## Essa aplicação conta com 3 rotas, elas são...
 
