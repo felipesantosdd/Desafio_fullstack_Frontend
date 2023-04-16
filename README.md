@@ -1,15 +1,25 @@
 # Readme
 
-## para rodar esta aplicação utilize o comando yarn para baixar suas dependencias, depois de baixar suas dependencias utilize yarn dev para rodar a aplicação.
+## Introdução
+Esta é uma aplicação que permite o gerenciamento de contatos. Antes de executá-la, certifique-se de ter o Yarn instalado em seu computador.
 
-## Essa aplicação conta com 3 rotas, elas são...
+## Instalação
+Para instalar as dependências necessárias, execute o comando yarn no diretório raiz do projeto.
 
-### /
-Essa rota leva para a tela de login, nela voce deve passar seu e-mail e senha para ter acesso ao dashboard.
+## Execução
+Para executar a aplicação, digite o comando yarn dev em seu terminal. A aplicação estará disponível no endereço http://localhost:3000.
 
-### /register
-Essa rota leva para a tela de registro, la você deve passar seu nome, email, telefone e password para se cadastrar na aplicação.
+## Rotas
+A aplicação possui três rotas principais:
 
-### /dashboard
-Essa rota é o principal da aplicação, nela voce terá acesso a todos os seus contatos cadastrados, tambem é possivel cadastrar novos contatos e excluir contatos existentes.
-Nessa aplicação não é possivel alterar seus contatos, apenas exluir e cadastrar novos.
+## /
+Esta rota leva à tela de login. Para acessar o dashboard, é necessário fornecer um e-mail e uma senha válidos.
+
+## /register
+Esta rota leva à tela de registro, onde é possível criar uma nova conta fornecendo um nome, um e-mail, um telefone e uma senha.
+
+## /dashboard
+Esta rota é a principal da aplicação. Nela, é possível visualizar todos os contatos cadastrados, bem como adicionar novos contatos e excluir contatos existentes. Não é possível editar contatos existentes nesta aplicação.
+
+## Conclusão
+Esta é uma aplicação simples, mas funcional, para gerenciamento de contatos. Sinta-se à vontade para usá-la como base para seus próprios projetos!
